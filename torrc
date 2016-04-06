@@ -1,0 +1,48 @@
+SocksPort localhost:9071
+RunAsDaemon 1
+
+ORPort 130.230.141.186:443 NoListen
+ORPort 192.168.8.23:10443 NoAdvertise
+
+Nickname haamu
+ContactInfo juha.nurmi<<a>>tut.fi
+
+DirPort 80
+DirPortFrontPage /etc/tor/tor-exit-notice.html
+
+ExitRelay 1
+
+# Accept HTTP/HTTPS
+#ExitPolicy accept *:80-81     # HTTP
+#ExitPolicy accept *:443       # HTTPS
+#ExitPolicy accept *:8080      # HTTP Proxies
+#ExitPolicy accept *:8008      # HTTP alternate
+
+#Ahmia.fi
+ExitPolicy accept 46.19.38.63:443
+ExitPolicy accept 46.19.38.63:80
+
+#Yleisradio
+ExitPolicy accept 91.229.138.0/23:443
+ExitPolicy accept 91.229.138.0/23:80
+
+#Areena video
+ExitPolicy accept 23.32.0.0/11:80
+ExitPolicy accept 23.32.0.0/11:443
+
+ExitPolicy accept 23.64.0.0/14:80
+ExitPolicy accept 23.64.0.0/14:443
+
+ExitPolicy accept 104.93.82.0/23:80
+ExitPolicy accept 104.93.82.0/23:443
+
+ExitPolicy accept 52.48.0.0/14:80
+ExitPolicy accept 52.48.0.0/14:443
+
+# Reject everything else
+ExitPolicy reject *:*
+ExitPolicy reject6 *:*
+
+AvoidDiskWrites 1
+MaxMemInQueues 512 MB
+OutboundBindAddress 192.168.8.23
